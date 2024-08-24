@@ -1,0 +1,30 @@
+//example c++
+
+#include <iostream>
+using namespace std;
+
+int main(){
+    cout << "Willian Hilgert" << endl;
+
+    double nota1, nota2, media = 0;
+    bool status; 
+
+    cout << "informe a primeira nota: "; 
+    cin >> nota1;
+
+    cout << "informe a segunda nota: "; 
+    cin >> nota2;
+
+    cout << endl;
+
+    media = (nota1 + nota2)/2;
+
+    status = media >= 6; 
+
+    if(status)
+         cout << "aprovado!" << endl;
+       else 
+         cout << "reprovado!" << endl;
+       
+    return 0; 
+}
