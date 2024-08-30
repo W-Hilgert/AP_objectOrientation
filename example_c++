@@ -28,3 +28,58 @@ int main(){
        
     return 0; 
 }
+
+example of classes
+#include <iostream>
+#include <string>
+
+ using namespace std;
+ 
+class Aluno {
+    private: 
+    string nome;
+    string email;
+    string senha;
+    
+    public: 
+    Aluno(const string& nome, const string& email, const string& senha) 
+        : nome(nome), email(email), senha(senha) {}
+        
+        void exibirInformacoes() const {
+        cout << "Nome: " << nome << endl;
+        cout << "Email: " << email << endl;
+        cout << "Senha: " << senha << endl;
+    }
+};
+
+class Disciplina {
+    private: 
+    string nome;
+    int cargaHoraria;
+    
+    public: 
+    Disciplina(const string& nome, const int cargaHoraria) 
+        : nome(nome), cargaHoraria(cargaHoraria) {}
+        
+         void exibirInformacoes() const {
+        cout << "Nome: " << nome << endl;
+        cout << "Carga Horaria: " << cargaHoraria << "horas." << endl;
+    }
+};
+int main() {
+    // Criando um objeto Aluno
+    Aluno aluno1("Willian", "willian@email.com", "senha123");
+    
+    // Criando um objeto Disciplina
+    Disciplina disciplina1("Programação C++", 60);
+
+    // Exibindo informações do aluno
+    cout << "Informações do Aluno:" << endl;
+    aluno1.exibirInformacoes();
+
+    // Exibindo informações da disciplina
+   cout << "\nInformações da Disciplina:" << endl;
+    disciplina1.exibirInformacoes();
+
+    return 0;
+}
