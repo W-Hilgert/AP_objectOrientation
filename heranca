@@ -1,0 +1,132 @@
+#include <iostream>
+using namespace std;
+
+// Classe Data
+class Data {
+    private:
+    int dia;
+    int mes;
+    int ano;
+    public:
+    // Construtor da classe Data
+    Data(int dia, int mes, int ano) {
+        this->dia = dia;
+        this->mes = mes;
+        this->ano = ano;
+    }
+    // Métodos de acesso
+    int getDia() {
+        return dia; 
+    }
+    int getMes() {
+        return mes;
+    }
+    int getAno() { 
+        return ano; 
+    }
+    void setDia(int dia){
+        this->dia = dia;
+    }
+    void setMes(int mes){
+        this->mes = mes;
+    }
+    void setAno(int ano){
+        this->ano = ano;
+    }
+    // Método para exibir a data no formato dd/mm/aaaa
+    void exibirData() {
+    cout << dia << "/" << mes << "/" << ano;
+};
+
+class Pessoa{
+    private:
+    int matricula;
+    string nome;
+    string email;
+    
+    public:
+    Pessoa(int matricula, string nome, string email){
+        this->matricula = matricula;
+        this->nome = nome;
+        this->email = email;
+    }
+    
+    getAno(){
+        return matricula;
+    }
+    getMes(){
+        return nome;
+    }
+    getDia(){
+        return email;
+    }
+    
+    void setMatricula(int matricula){
+        this->matricula = matricula;
+    }
+    void setNome(string nome){
+        this->nome = nome;
+    }
+    void setEmail(string email){
+        this->email = email;
+    }
+};
+
+class Aluno{
+    private:
+    string turma;
+    
+    public:
+    Aluno(string turma){
+        this->turma = turma;
+    }
+    
+    get(){
+        return turma;
+    }
+    void setTurma(string turma){
+        this->turma = turma;
+    }
+};
+
+class Contato{
+    private: 
+    date data;
+    string titulo;
+    string assunto;
+    string descricao;
+    
+    public: 
+    Contato(date data, string titulo, string assunto, string descricao){
+        this->data = data;
+        this->titulo = titulo;
+        this->assunto = assunto;
+        this->descricao = descricao;
+    }
+    
+    getData(){
+        return data;
+    }
+    getTitulo(){
+        return titulo;
+    }
+    getAssunto(){
+        return assunto;
+    }
+    getDescricao(){
+        return descricao;
+    }
+    
+    void setData(date data){
+        this->data=data;
+    }
+    void setTitulo(string titulo){
+        this->titulo=titulo;
+    }
+    void setAssunto(string assunto){
+        this->assunto = assunto;
+    }
+    void setDescricao(string descricao){
+        this->descricao = descricao;
+    }
+};
