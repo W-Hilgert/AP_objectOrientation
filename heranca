@@ -51,13 +51,13 @@ class Pessoa{
         this->email = email;
     }
     
-    getAno(){
+    int getAno(){
         return matricula;
     }
-    getMes(){
+    string getMes(){
         return nome;
     }
-    getDia(){
+    string getDia(){
         return email;
     }
     
@@ -70,6 +70,8 @@ class Pessoa{
     void setEmail(string email){
         this->email = email;
     }
+    
+    boolean login();
 };
 
 class Aluno{
@@ -81,7 +83,7 @@ class Aluno{
         this->turma = turma;
     }
     
-    get(){
+    string get(){
         return turma;
     }
     void setTurma(string turma){
@@ -104,16 +106,16 @@ class Contato{
         this->descricao = descricao;
     }
     
-    getData(){
+    date getData(){
         return data;
     }
-    getTitulo(){
+    string getTitulo(){
         return titulo;
     }
-    getAssunto(){
+    string getAssunto(){
         return assunto;
     }
-    getDescricao(){
+    string getDescricao(){
         return descricao;
     }
     
@@ -128,5 +130,128 @@ class Contato{
     }
     void setDescricao(string descricao){
         this->descricao = descricao;
+    }
+    
+    void notificaDestinatario(){
+        
+    }
+};
+
+class Professor {
+    private: 
+    string titulacao;
+    string linhaPesquisa;
+    
+    public: 
+    Professor(string titulacao, string linhaPesquisa){
+        this->titulacao = titulacao;
+        this->linhaPesquisa = linhaPesquisa;
+    }
+    
+    void setTitulacao(string titulacao){
+        this->titulacao = titulacao;
+    }
+    void setLinhaPesquisa(string linhaPesquisa){
+        this->linhaPesquisa=linhaPesquisa;
+    }
+    
+    string getTitulacao(){
+        return titulacao;
+    }
+    string getLinhaPesquisa(){
+        return linhaPesquisa;
+    }
+};
+
+class Trabalho {
+    private:
+    int ano;
+    int semestre;
+    date prazo;
+    string parecer;
+    
+    public:
+    Trabalho(int ano, int semestre, date prazo, string parecer){
+        this->ano = ano;
+        this->semestre = semestre;
+        this->prazo = prazo;
+        this->parecer = parecer;
+    }
+    
+    void setAno(int ano){
+        this->ano = ano;
+    }
+    void setSemestre(int semestre){
+         this->semestre = semestre;
+    }
+    void setPrazo(){
+        this->prazo = prazo;
+    }
+    void setParecer(){
+        this-parecer = parecer;
+    }
+    
+    int getAno(){
+        return ano;
+    }
+    int getSemestre(){
+        return semestre;
+    }
+    date getPrazo(){
+        return prazo;
+    }
+    string getParecer(){
+        return parecer;
+    }
+};
+
+class Atuacao {
+    private:
+    string descricao;
+    
+    public:
+    Atuacao(string descricao){
+        this->descricao = descricao;
+    }
+    
+    void setDescricao(string descricao){
+        this->descricao = descricao;
+    }
+    string getDescricao(){
+        return descricao;
+    }
+};
+
+class Ppesquisa {
+    private:
+    string titulo;
+    string descricao;
+    int ano;
+    
+    public:
+    Ppesquisa(string titulo, string descricao, int ano){
+        this->titulo = titulo;
+        this->descricao = descricao;
+        this->ano = ano;
+    }
+    
+    void setTitulo(string titulo){
+        this->titulo = titulo;
+    }
+    void setDescricao(string descricao){
+        this->descricao = descricao;
+    }
+    void setAno(int ano){
+        this->ano = ano;
+    }
+    
+    string getTitulo(){
+        return titulo;
+    }
+    string getDescricao(){
+        return descricao;
+    }
+    int getAno(){
+        return ano;
     }
 };
