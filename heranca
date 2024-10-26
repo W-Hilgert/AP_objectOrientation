@@ -51,13 +51,13 @@ class Pessoa{
         this->email = email;
     }
     
-    int getAno(){
+    int getMatricula(){
         return matricula;
     }
-    string getMes(){
+    string getNome(){
         return nome;
     }
-    string getDia(){
+    string getEmail(){
         return email;
     }
     
@@ -71,7 +71,9 @@ class Pessoa{
         this->email = email;
     }
     
-    boolean login();
+    boolean login(){
+        
+    }
 };
 
 class Aluno{
@@ -88,6 +90,9 @@ class Aluno{
     }
     void setTurma(string turma){
         this->turma = turma;
+    }
+    void dadosAluno(){
+        Aluno
     }
 };
 
@@ -132,8 +137,9 @@ class Contato{
         this->descricao = descricao;
     }
     
-    void notificaDestinatario(){
-        
+    void notificaDestinatario(Pessoa & pessoa){
+        cout << "notificacao " << Pessoa.getNome() << endl;
+        cout << "assunto " << Contato.getAssunto() << endl;
     }
 };
 
@@ -203,6 +209,16 @@ class Trabalho {
     string getParecer(){
         return parecer;
     }
+    
+    voi addTrabalho(Trabalho trab){
+        array[indice] = trab;
+    }
+    
+    void listaTrabalho(){
+        int arrayList[100];
+    }
+    
+   
 };
 
 class Atuacao {
@@ -219,6 +235,9 @@ class Atuacao {
     }
     string getDescricao(){
         return descricao;
+    }
+    void areaAtuacao(){
+        
     }
 };
 
@@ -254,4 +273,16 @@ class Ppesquisa {
     int getAno(){
         return ano;
     }
+    
+    void listaProjeto(){
+        cout << "insira o tam: " << endl
+        for (int i = 0; i < tam; i++)
+        cout << "insira: " << endl;
+        array[i];
+    }
 };
+
+int main(){
+    
+    return 0;
+}
