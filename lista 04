@@ -1,0 +1,201 @@
+#include <iostream>
+#include <vector>
+#include <string>
+using namespace std;
+
+// Classe Data
+class Data {
+private:
+    int dia, mes, ano;
+
+public:
+    Data(int d = 1, int m = 1, int a = 2000) : dia(d), mes(m), ano(a) {}
+
+    string toString() const {
+        return to_string(dia) + "/" + to_string(mes) + "/" + to_string(ano);
+    }
+};
+
+// Classe Pessoa
+class Pessoa {
+protected:
+    int matricula;
+    string nome;
+    string email;
+
+public:
+    Pessoa(int mat, string n, string e) : matricula(mat), nome(n), email(e) {}
+
+    virtual void exibirDados() const {
+        cout << "Matrícula: " << matricula << "\nNome: " << nome << "\nEmail: " << email << endl;
+    }
+
+    string getNome() const { return nome; }
+};
+
+// Classe Aluno
+class Aluno : public Pessoa {
+private:
+    string turma;
+
+public:
+    Aluno(int mat, string n, string e, string t) : Pessoa(mat, n, e), turma(t) {}
+
+    void exibirDados() const override {
+        Pessoa::exibirDados();
+        cout << "Turma: " << turma << endl;
+    }
+};
+
+// Classe Professor
+class Professor : public Pessoa {
+private:
+    string titulacao;
+    vector<string> projetos;
+
+public:
+    Professor(int mat, string n, string e, string tit)
+        : Pessoa(mat, n, e), titulacao(tit) {}
+
+    void adicionarProjeto(const string& projeto) { projetos.push_back(projeto); }
+
+    void listarProjetos() const {
+        cout << "Projetos de pesquisa do professor " << nome << ":\n";
+        for (const auto& projeto : projetos) {
+            cout << "- " << projeto << endl;
+        }
+    }
+
+    void exibirDados() const override {
+        Pessoa::exibirDados();
+        cout << "Titulação: " << titulacao << endl;
+    }
+};
+
+// Classe Trabalho
+class Trabalho {
+private:
+    string titulo;
+    Data prazo;
+    Aluno* aluno;
+    Professor* orientador;
+
+public:
+    Trabalho(string t, Data p, Aluno* a, Professor* o)
+        : titulo(t), prazo(p), aluno(a), orientador(o) {}
+
+    void exibirDados() const {
+        cout << "Título: " << titulo << "\nPrazo: " << prazo.toString()
+             << "\nAluno: " << aluno->getNome() << "\nOrientador: " << orientador->getNome() << endl;
+    }
+};
+
+// Função principal
+int main() {
+    vector<Aluno> alunos;
+    vector<Professor> professores;
+    vector<Trabalho> trabalhos;
+
+    int opcao;
+    do {
+        cout << "\nMenu:\n";
+        cout << "1. Inserir Aluno\n";
+        cout << "2. Inserir Professor\n";
+        cout << "3. Inserir Trabalho de Conclusão\n";
+        cout << "4. Listar Trabalhos de Conclusão\n";
+        cout << "5. Consultar Projetos de Pesquisa por Professor\n";
+        cout << "6. Listar Professores\n";
+        cout << "0. Sair\n";
+        cout << "Escolha uma opção: ";
+        cin >> opcao;
+
+        switch (opcao) {
+            case 1: {
+                int mat;
+                string nome, email, turma;
+                cout << "Matrícula: ";
+                cin >> mat;
+                cout << "Nome: ";
+                cin.ignore();
+                getline(cin, nome);
+                cout << "Email: ";
+                cin >> email;
+                cout << "Turma: ";
+                cin.ignore();
+                getline(cin, turma);
+                alunos.emplace_back(mat, nome, email, turma);
+                break;
+            }
+            case 2: {
+                int mat;
+                string nome, email, titulacao;
+                cout << "Matrícula: ";
+                cin >> mat;
+                cout << "Nome: ";
+                cin.ignore();
+                getline(cin, nome);
+                cout << "Email: ";
+                cin >> email;
+                cout << "Titulação: ";
+                cin.ignore();
+                getline(cin, titulacao);
+                professores.emplace_back(mat, nome, email, titulacao);
+                break;
+            }
+            case 3: {
+                string titulo;
+                int dia, mes, ano, alunoIdx, profIdx;
+                cout << "Título: ";
+                cin.ignore();
+                getline(cin, titulo);
+                cout << "Data de entrega (DD MM AAAA): ";
+                cin >> dia >> mes >> ano;
+
+                cout << "Selecione o aluno:\n";
+                for (size_t i = 0; i < alunos.size(); ++i) {
+                    cout << i + 1 << ". " << alunos[i].getNome() << endl;
+                }
+                cin >> alunoIdx;
+
+                cout << "Selecione o professor:\n";
+                for (size_t i = 0; i < professores.size(); ++i) {
+                    cout << i + 1 << ". " << professores[i].getNome() << endl;
+                }
+                cin >> profIdx;
+
+                trabalhos.emplace_back(titulo, Data(dia, mes, ano), &alunos[alunoIdx - 1], &professores[profIdx - 1]);
+                break;
+            }
+            case 4:
+                for (const auto& trabalho : trabalhos) {
+                    trabalho.exibirDados();
+                }
+                break;
+            case 5: {
+                string nome;
+                cout << "Digite o nome do professor: ";
+                cin.ignore();
+                getline(cin, nome);
+                for (const auto& prof : professores) {
+                    if (prof.getNome() == nome) {
+                        prof.listarProjetos();
+                        break;
+                    }
+                }
+                break;
+            }
+            case 6:
+                for (const auto& prof : professores) {
+                    prof.exibirDados();
+                }
+                break;
+            case 0:
+                cout << "Encerrando o programa..." << endl;
+                break;
+            default:
+                cout << "Opção inválida!" << endl;
+        }
+    } while (opcao != 0);
+
+    return 0;
+}
